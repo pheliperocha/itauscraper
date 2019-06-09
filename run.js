@@ -1,5 +1,5 @@
-const nconf = require('nconf');
-const itauscraper = require('./itauscraper.js');
+const nconf = require('nconf')
+const itauscraper = require('./itauscraper.js')
 
 var argv = require('yargs')
     .env()
@@ -24,7 +24,7 @@ var argv = require('yargs')
     })
     .option('days', {
         'alias': 'd',
-        'describe': 'Transaction log days',
+        'describe': 'Transaction log days (3, 5, 7, 15, 30, 60 or 90 days)',
         'required': true,
         type: 'number'
     })
@@ -33,16 +33,13 @@ var argv = require('yargs')
         'default': 'production',
         choices: ['development', 'production']
     })
-;
 
-// Config
-nconf.env().argv(argv);
-const environment = nconf.get('node_env');
-nconf.file(environment, './config/' + environment.toLowerCase() + '.json');
-nconf.file('default', './config/default.json');
+nconf.env().argv(argv)
+const environment = nconf.get('node_env')
+nconf.file(environment, './config/' + environment.toLowerCase() + '.json')
+nconf.file('default', './config/default.json')
 
-const options = nconf.get();
+const options = nconf.get()
 
-console.log('Starting using node environment: ' + environment);
-// Run
-itauscraper(options);
+console.log('Starting using node environment: ' + environment)
+itauscraper(options)
