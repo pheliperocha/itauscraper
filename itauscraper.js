@@ -102,7 +102,7 @@ const mapDatas = (data) => {
         return {
             date: moment(item.date, 'DD/MM/YYYY').format('YYYY-MM-DD'),
             description: item.description,
-            value: +item.value.replace(',', '.')
+            value: (item.value) ? +item.value.replace(',', '.') : item.value
         }    
     })
 }
